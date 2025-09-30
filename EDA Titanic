@@ -1,0 +1,70 @@
+Task 5: Exploratory Data Analysis (EDA)
+🎯 Objective
+
+Extract insights using visual and statistical exploration of the Titanic dataset (or any other dataset).
+
+🛠 Tools
+
+Python: Pandas, Matplotlib, Seaborn
+
+Jupyter Notebook (for analysis & plots)
+
+📑 Deliverables
+
+EDA_Titanic.ipynb → Jupyter Notebook with code, plots & observations
+
+EDA_Report.pdf → Exported summary of findings
+
+README.md → Documentation of the task
+
+Dataset (train.csv from Titanic dataset
+)
+
+✅ Notebook Outline (EDA_Titanic.ipynb)
+# Step 1: Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Step 2: Load dataset
+df = pd.read_csv("train.csv")
+
+# Step 3: Basic Exploration
+print(df.head())
+print(df.info())
+print(df.describe())
+print(df.isnull().sum())
+
+# Step 4: Univariate Analysis
+df['Age'].hist(bins=20)
+plt.title("Age Distribution")
+plt.show()
+
+sns.countplot(x="Survived", data=df)
+plt.title("Survival Count")
+plt.show()
+
+# Step 5: Bivariate Analysis
+sns.boxplot(x="Survived", y="Age", data=df)
+plt.title("Age vs Survival")
+plt.show()
+
+sns.countplot(x="Pclass", hue="Survived", data=df)
+plt.title("Class vs Survival")
+plt.show()
+
+# Step 6: Correlation Heatmap
+plt.figure(figsize=(8,6))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
+plt.title("Correlation Heatmap")
+plt.show()
+
+# Step 7: Pairplot
+sns.pairplot(df.dropna(), hue="Survived")
+plt.show()
+
+# Step 8: Observations
+# Write markdown cells in Jupyter after each plot with insights
+
+# Step 9: Summary of Findings
+# Summarize key trends, correlations, and anomalies
